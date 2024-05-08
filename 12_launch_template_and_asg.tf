@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "asg" {
   health_check_grace_period = 15
   health_check_type         = "EC2"
   force_delete              = true
-  vpc_zone_identifier       = module.vpc.public_subnets                                                                                               #decides whether EC2 will be in public or Private
+  vpc_zone_identifier       = module.vpc.private_subnets     //For testing using public. For Production use private                                                                                          #decides whether EC2 will be in public or Private
   target_group_arns         = [module.alb.target_groups[var.target_group_frontend]["arn"], module.alb.target_groups[var.target_group_backend]["arn"]] #Will add instances into ALB target group
 
   launch_template {
