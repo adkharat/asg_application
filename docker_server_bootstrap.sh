@@ -7,6 +7,10 @@ sudo usermod -a -G docker $(whoami)
 newgrp docker
 sudo chmod 666 /var/run/docker.sock
 
+# use stress tool for putting stress on EC2
+sudo yum install -y epel-release
+sudo yum install -y stress
+
 # Run Frontend application on host port 80
 docker run -d -p 80:80 -e REACT_APP_PUBLIC_URL=weekendbuyer.shop adkharat/react-currency-exchange-app-fe:16   
 
